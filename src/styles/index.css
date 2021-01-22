@@ -1,0 +1,15 @@
+/*! @import */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .router-link {
+    @apply hover:text-green-700 text-base font-bold underline;
+  }
+
+  .router-link--active,
+  .router-link--exact-active {
+    @apply text-green-700;
+  }
+}

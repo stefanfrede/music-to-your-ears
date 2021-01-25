@@ -1,6 +1,6 @@
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import NotFound from '../views/404.vue';
+import Home from '../layouts/Home.vue';
+import About from '../layouts/About.vue';
+import NotFound from '../layouts/404.vue';
 
 export const routes = [
   {

@@ -53,7 +53,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@vitejs/plugin-vue": "^1.1.0",
+    "@vitejs/plugin-vue": "^1.1.2",
     "@vue/compiler-sfc": "^3.0.5",
     "babel-eslint": "^10.1.0",
     "browserslist": "^4.16.1",
@@ -72,12 +72,15 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "tailwindcss": "^2.0.2",
-    "vite": "^2.0.0-beta.37",
+    "vite": "^2.0.0-beta.52",
     "workbox-cli": "^6.0.2"
   },
   "dependencies": {
     "@vueuse/head": "^0.2.3",
+    "@xstate/vue": "^0.4.0",
+    "node-fetch": "^2.6.1",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "xstate": "^4.16.0"
   }
 }

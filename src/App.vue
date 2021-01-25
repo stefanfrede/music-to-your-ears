@@ -1,34 +1,7 @@
 <template>
-  <nav class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <figure class="flex flex-shrink-0 items-center space-x-1">
-        <img alt="Vue.js logo" class="h-8 w-auto" src="./assets/logo.svg" />
-        <figcaption>Starter-Kit</figcaption>
-      </figure>
-      <ul class="flex space-x-4">
-        <li>
-          <router-link :to="{ name: 'Home' }" class="router-link"
-            >Home</router-link
-          >
-        </li>
-        <li>
-          <router-link :to="{ name: 'About' }" class="router-link"
-            >About</router-link
-          >
-        </li>
-        <li>
-          <a
-            href="https://github.com/stefanfrede/music-to-your-ears/"
-            class="text-base font-bold underline hover:text-green-900"
-          >
-            GitHub
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <Header class="pt-10" />
   <div class="py-10">
-    <router-view />
+    <Home />
   </div>
 </template>
 
@@ -38,8 +11,15 @@ import { useHead } from '@vueuse/head';
 
 import { siteData } from '@/store';
 
+import Header from '@/components/Header.vue';
+import Home from '@/layouts/Home.vue';
+
 export default {
   name: 'App',
+  components: {
+    Header,
+    Home,
+  },
   setup() {
     const data = reactive(siteData);
 

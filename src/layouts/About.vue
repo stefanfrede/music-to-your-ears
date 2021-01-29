@@ -25,7 +25,7 @@
           <p class="flex items-center">
             Latest deploy status:
             <a
-              href="https://app.netlify.com/sites/music-to-your-ears/deploys"
+              href="https://app.netlify.com/sites/the-fab-5/deploys"
               class="ml-2"
             >
               <img
@@ -55,7 +55,7 @@
           </p>
           <p>
             <a
-              href="https://app.netlify.com/start/deploy?repository=https://github.com/stefanfrede/music-to-your-ears"
+              href="https://app.netlify.com/start/deploy?repository=https://github.com/stefanfrede/the-fab-5"
             >
               <img
                 src="/src/assets/deploy-to-netlify.svg"

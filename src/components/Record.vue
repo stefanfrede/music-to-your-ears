@@ -1,21 +1,27 @@
 <template>
-  <div class="bg-pink-500 text-gray-900">
-    <template v-if="state.matches('pending')">
-      <pre>Loading...</pre>
-    </template>
-    <template v-if="state.matches('successful.withData')">
-      <figure class="w-12 h-auto">
-        <img :src="state.context.results" alt="" />
-      </figure>
-    </template>
-    <template v-if="state.matches('successful.withoutData')">
-      <pre>No data available.</pre>
-    </template>
-    <template v-if="state.matches('failed')">
-      <pre>{{ state.context.message }}</pre>
-    </template>
-    {{ title }}
-    {{ releaseDate }}
+  <div class="col-span-1 bg-gray-100 text-gray-900 rounded-lg shadow p-6">
+    <figure class="flex items-center space-x-4 lg:space-x-6">
+      <template v-if="state.matches('loading')">
+        <RecordArt class="animate-pulse" />
+      </template>
+      <template v-if="state.matches('resolved.withData')">
+        <img
+          :src="state.context.data"
+          class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
+          alt=""
+        />
+      </template>
+      <template v-if="state.matches('resolved.withoutData')">
+        <RecordArt />
+      </template>
+      <template v-if="state.matches('failed')">
+        <RecordArt :status="error" />
+      </template>
+      <figcaption class="font-medium text-lg leading-6 space-y-1">
+        <h3>{{ title }}</h3>
+        <p class="text-gray-500">{{ releaseDate }}</p>
+      </figcaption>
+    </figure>
   </div>
 </template>
 
@@ -25,8 +31,13 @@ import { ref } from 'vue';
 import { useMachine } from '@xstate/vue';
 import { fetchMachine } from '@/machines/fetch';
 
+import RecordArt from '@/components/RecordArt.vue';
+
 export default {
   name: 'Record',
+  components: {
+    RecordArt,
+  },
   props: {
     items: {
       type: Object,

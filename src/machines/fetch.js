@@ -5,31 +5,26 @@ export const fetchMachine = Machine(
     id: 'fetch',
     initial: 'idle',
     context: {
-      results: [],
-      message: '',
+      data: null,
+      error: null,
     },
     states: {
       idle: {
         on: {
-          FETCH: 'pending',
+          FETCH: 'loading',
         },
       },
-      pending: {
+      loading: {
         invoke: {
           src: 'fetchData',
-          onDone: { target: 'successful', actions: ['setResults'] },
-          onError: { target: 'failed', actions: ['setMessage'] },
+          onDone: { target: 'resolved', actions: ['setdata'] },
+          onError: { target: 'rejected', actions: ['seterror'] },
         },
       },
-      failed: {
-        on: {
-          FETCH: 'pending',
-        },
-      },
-      successful: {
+      resolved: {
         initial: 'unknown',
         on: {
-          FETCH: 'pending',
+          FETCH: 'loading',
         },
         states: {
           unknown: {
@@ -47,20 +42,25 @@ export const fetchMachine = Machine(
           withoutData: {},
         },
       },
+      rejected: {
+        on: {
+          FETCH: 'loading',
+        },
+      },
     },
   },
   {
     actions: {
-      setResults: assign((_, event) => ({
-        results: event.data,
+      setdata: assign((_, event) => ({
+        data: event.data,
       })),
-      setMessage: assign((_, event) => ({
-        message: event.data,
+      seterror: assign((_, event) => ({
+        error: event.data,
       })),
     },
     guards: {
       hasData: (context) => {
-        return context.results && context.results.length > 0;
+        return context?.data?.length > 0;
       },
     },
   },

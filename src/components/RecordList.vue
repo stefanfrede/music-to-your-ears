@@ -1,21 +1,23 @@
 <template>
   <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="py-8 text-gray-100 leading-8">
-      <template v-if="state.matches('pending')">
+      <template v-if="state.matches('loading')">
         <pre>Loading...</pre>
       </template>
-      <template v-if="state.matches('successful.withData')">
-        <ul class="list-disc">
-          <li v-for="result of state.context.results" :key="result.id">
-            <Record :items="result" />
+      <template v-if="state.matches('resolved.withData')">
+        <ul
+          class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
+        >
+          <li v-for="items of state.context.data" :key="items.id">
+            <Record :items="items" />
           </li>
         </ul>
       </template>
-      <template v-if="state.matches('successful.withoutData')">
+      <template v-if="state.matches('resolved.withoutData')">
         <pre>No data available.</pre>
       </template>
       <template v-if="state.matches('failed')">
-        <pre>{{ state.context.message }}</pre>
+        <pre>{{ state.context.error }}</pre>
       </template>
     </div>
   </div>

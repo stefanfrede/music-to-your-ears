@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const AbortController = require('node-abort-controller');
 
 const fetchWithTimeout = (uri, options = {}, time = 3000) => {
   const controller = new AbortController();

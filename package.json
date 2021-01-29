@@ -78,6 +78,7 @@
   "dependencies": {
     "@vueuse/head": "^0.2.3",
     "@xstate/vue": "^0.4.0",
+    "node-abort-controller": "^1.1.0",
     "node-fetch": "^2.6.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3",

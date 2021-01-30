@@ -2,7 +2,13 @@
   <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="py-8 text-gray-100 leading-8">
       <template v-if="state.matches('loading')">
-        <pre>Loading...</pre>
+        <ul
+          class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
+        >
+          <li v-for="card of 10" :key="card.id">
+            <Card class="animate-pulse" />
+          </li>
+        </ul>
       </template>
       <template v-if="state.matches('resolved.withData')">
         <ul
@@ -27,11 +33,13 @@
 import { useMachine } from '@xstate/vue';
 import { fetchMachine } from '@/machines/fetch';
 
+import Card from '@/components/Card.vue';
 import Record from '@/components/Record.vue';
 
 export default {
   name: 'RecordList',
   components: {
+    Card,
     Record,
   },
   setup() {

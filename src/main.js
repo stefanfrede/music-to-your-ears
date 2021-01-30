@@ -2,14 +2,13 @@ import { createApp } from 'vue';
 import { createHead } from '@vueuse/head';
 
 import App from './App.vue';
-import router from './router';
 
 import '@/styles/index.css';
 
 const app = createApp(App);
 const head = createHead();
 
-app.use(router).use(head).mount('#app');
+app.use(head).mount('#app');
 
 // Check that service workers are supported
 if ('serviceWorker' in navigator && process.env.NODE_ENV !== 'development') {

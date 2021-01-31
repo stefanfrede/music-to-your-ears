@@ -4,18 +4,18 @@
       <template v-if="state.matches('pending')">
         <RecordArt class="animate-pulse" />
       </template>
-      <template v-if="state.matches('resolved.withData')">
+      <template v-else-if="state.matches('resolved.withData')">
         <img
           :src="state.context.data"
           class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
           alt=""
         />
       </template>
-      <template v-if="state.matches('resolved.withoutData')">
-        <RecordArt />
-      </template>
-      <template v-if="state.matches('failed')">
+      <template v-else-if="state.matches('failed')">
         <RecordArt :status="error" />
+      </template>
+      <template v-else>
+        <RecordArt />
       </template>
       <figcaption class="font-medium text-lg leading-6 space-y-1">
         <h3>{{ title }}</h3>

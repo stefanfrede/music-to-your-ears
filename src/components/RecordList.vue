@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="py-8 text-gray-100 leading-8">
-      <template v-if="state.matches('loading')">
+      <template v-if="state.matches('pending')">
         <ul
           class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
         >

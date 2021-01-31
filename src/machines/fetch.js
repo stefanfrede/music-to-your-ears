@@ -5,16 +5,17 @@ export const fetchMachine = Machine(
     id: 'fetch',
     initial: 'idle',
     context: {
-      data: null,
-      error: null,
+      data: undefined,
+      error: undefined,
     },
     states: {
       idle: {
         on: {
-          FETCH: 'loading',
+          FETCH: 'pending',
         },
       },
-      loading: {
+      pending: {
+        id: 'fetchData',
         invoke: {
           src: 'fetchData',
           onDone: { target: 'resolved', actions: ['setdata'] },
@@ -23,9 +24,6 @@ export const fetchMachine = Machine(
       },
       resolved: {
         initial: 'unknown',
-        on: {
-          FETCH: 'loading',
-        },
         states: {
           unknown: {
             always: [
@@ -41,10 +39,13 @@ export const fetchMachine = Machine(
           withData: {},
           withoutData: {},
         },
+        on: {
+          FETCH: 'pending',
+        },
       },
       rejected: {
         on: {
-          FETCH: 'loading',
+          FETCH: 'pending',
         },
       },
     },
@@ -59,8 +60,8 @@ export const fetchMachine = Machine(
       })),
     },
     guards: {
-      hasData: (context) => {
-        return context?.data?.length > 0;
+      hasData(context) {
+        return context.data && context.data.length > 0;
       },
     },
   },

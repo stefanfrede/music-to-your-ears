@@ -1,7 +1,7 @@
 <template>
   <div class="col-span-1 bg-gray-100 text-gray-900 rounded-lg shadow p-6">
     <figure class="flex items-center space-x-4 lg:space-x-6">
-      <template v-if="state.matches('loading')">
+      <template v-if="state.matches('pending')">
         <RecordArt class="animate-pulse" />
       </template>
       <template v-if="state.matches('resolved.withData')">

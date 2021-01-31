@@ -1,8 +1,9 @@
 module.exports = {
-  cacheId: 'vuejsstarterkit',
+  cacheId: 'thefab5',
   globDirectory: 'dist/',
   globPatterns: ['**/*.{css,js,json}'],
   swDest: 'dist/sw.js',
+  inlineWorkboxRuntime: true,
 
   runtimeCaching: [
     {

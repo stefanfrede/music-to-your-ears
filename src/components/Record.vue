@@ -7,7 +7,7 @@
       <template v-else-if="state.matches('resolved.withData')">
         <img
           :src="state.context.data"
-          class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
+          class="w-16 h-16 flex-shrink-0 rounded-full lg:w-20 lg:h-20"
           alt=""
         />
       </template>

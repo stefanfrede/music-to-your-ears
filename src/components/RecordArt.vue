@@ -1,7 +1,7 @@
 <template>
   <svg
-    title="logo"
-    class="w-16 h-16 lg:w-20 lg:h-20 text-gray-900"
+    title="record"
+    class="w-16 h-16 flex-shrink-0 lg:w-20 lg:h-20 text-gray-900"
     :class="textColor"
     aria-labelledby="fab5-record"
     role="img"
